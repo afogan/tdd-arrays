@@ -51,8 +51,6 @@ if (array.length === 1) {
 return [array[0], array[array.length - 1]];
 }
 
-
-
 /**
  * @param {string} str1 - the first string
  * @param {string} str2 - the second string
@@ -67,9 +65,15 @@ return [array[0], array[array.length - 1]];
  * sharesFirstLetter("cat", "dog"); // false
  */
 export function sharesFirstLetter(str1, str2) {
-  // TODO
-}
-
+ if (str1 === "" || str2 === "") {
+  return false;
+ }
+  if (str1[0] === str2[0]) {
+  return true;
+ } 
+  return false;
+ }
+ 
 /**
  * @param {number[]} numbers - an array of numbers
  * @returns {number[]} a new array with each number multiplied by 5
@@ -82,7 +86,7 @@ export function sharesFirstLetter(str1, str2) {
  * quintuple([]); // []
  */
 export function quintuple(numbers) {
-  // TODO
+return numbers.map(num => num * 5);
 }
 
 /**
@@ -102,8 +106,14 @@ export function quintuple(numbers) {
  * @example
  * pluralize([]); // []
  */
-export function pluralize(words) {
-  // TODO
+export function pluralize(words){
+return words.map(word => {
+if (word.endsWith("s")) {
+  return word + "es";
+} else {
+  return word + "s";
+}
+});
 }
 
 /**
@@ -120,7 +130,13 @@ export function pluralize(words) {
  * countAttendance([]); // 0
  */
 export function countAttendance(attendance) {
-  // TODO
+let count = 0
+for (let i = 0; i < attendance.length; i++) {
+  if (attendance[i] === true) {
+    count++;
+  }
+}
+  return count;
 }
 
 /**
@@ -136,9 +152,17 @@ export function countAttendance(attendance) {
  * getLongestWord(["a", "ab", "abc"]); // "abc"
  */
 export function getLongestWord(sentence) {
-  // TODO
+if (sentence.length === 0) {
+  return null;
+  } 
+  let longest = sentence[0]
+  for (let i=0; i < sentence.length; i++) {
+    if (sentence[i].length > longest.length) { 
+      longest = sentence[i]
+  }
+  }
+   return longest;
 }
-
 /**
  * @param {string[]} playlist - an array of song titles
  * @param {string} song - the name of a song to find
@@ -153,7 +177,12 @@ export function getLongestWord(sentence) {
  * findSong([], "Midnight Drive"); // -1
  */
 export function findSong(playlist, song) {
-  // TODO
+  for (let i = 0; i < playlist.length; i++) {
+    if (playlist[i] === song) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -170,5 +199,13 @@ export function findSong(playlist, song) {
  * findSpy([["tree","lamp"],["pigeon","guard"]]); // null
  */
 export function findSpy(map) {
-  // TODO
+  for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+      if (map[i][j] === "spy") {
+        return [i, j];
+      }
+    }
+  }
+  return null;
 }
+
