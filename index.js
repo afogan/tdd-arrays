@@ -25,7 +25,7 @@ return array[0];
  * getLast([true,false,true]); // true
  */
 export function getLast(array) {
-  // TODO
+return array[array.length - 1];
 }
 
 /**
@@ -42,8 +42,16 @@ export function getLast(array) {
  * getFirstLast([42]); // [42]
  */
 export function getFirstLast(array) {
-  // TODO
+if (array.length === 0) {
+  return [];
+} 
+if (array.length === 1) {
+   return array;
+} 
+return [array[0], array[array.length - 1]];
 }
+
+
 
 /**
  * @param {string} str1 - the first string
